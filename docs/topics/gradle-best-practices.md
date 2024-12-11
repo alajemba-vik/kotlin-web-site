@@ -125,3 +125,17 @@ do this by setting up persistent storage or using a remote build cache. This pro
 as some providers, like GitHub, offer this service almost out of the box.
 
 Explore Gradle's community cookbook on [Using Gradle with Continuous Integration systems](https://community.gradle.org/cookbook/ci/).
+
+### Use remote build cache
+<primary-label ref="advanced"/>
+
+Like the [local build cache](#use-local-build-cache), the remote build cache helps you save time by reusing outputs
+from other builds. It can retrieve task outputs from any earlier build you've already run, not just the last one.
+
+The remote build cache uses a cache server to share task outputs across builds. For example, in a development environment
+with a CI/CD server, all builds on the server populate the remote cache. When you check out the main branch to 
+start a new feature, you can immediately access incremental builds.
+
+Keep in mind that a slow internet connection might make transferring cached results slower than running tasks locally.
+
+To learn more, read Gradle's documentation about their [Build cache](https://docs.gradle.org/current/userguide/build_cache.html).
