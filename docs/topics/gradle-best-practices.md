@@ -1,5 +1,8 @@
 [//]: # (title: Gradle best practices)
 
+[Gradle](https://docs.gradle.org/current/userguide/userguide.html) is a build system used by many Kotlin projects to automate
+and manage the build process.
+
 Getting the best out of Gradle is essential to help you spend less time managing and waiting for builds, and more time 
 coding. Here we provide a set of best practices split into two key areas: **organizing** and **optimizing** your projects.
 
@@ -12,7 +15,7 @@ This section focuses on structuring your Gradle projects to improve clarity, mai
 Use a version catalog in a `libs.versions.toml` file to centralize dependency management, enabling you to define and 
 reuse versions, libraries, and plugins consistently across projects.
 
-```none
+```kotlin
 [versions]
 kotlinxCoroutines = "%coroutinesVersion%"
 
@@ -22,7 +25,7 @@ kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", 
 
 With the following dependency added to your `build.gradle.kts` file:
 
-```none
+```kotlin
 dependencies {
     implementation(libs.kotlinxCoroutines)
 }
@@ -102,7 +105,7 @@ To learn more about how KSP compares to kapt, check out [why KSP](ksp-why-ksp.md
 {style="note"}
 
 Use a modularized project structure to accelerate build speed and enable easier parallel development. Structure your
-project into one root project and one or more subprojects. If there are changes in only one of the subprojects, Gradle
+project into one root project and one or more subprojects. If changes only affect one of the subprojects, Gradle
 rebuilds only that specific subproject.
 
 ```none
@@ -122,7 +125,7 @@ Learn more in Gradle's documentation about [Structuring projects with Gradle](ht
 
 Set up a CI/CD process to significantly reduce build time by using incremental builds and caching dependencies. You can
 do this by setting up persistent storage or using a remote build cache. This process doesn't have to be time-consuming, 
-as some providers, like GitHub, offer this service almost out of the box.
+as some providers, like [GitHub](https://github.com/features/actions), offer this service almost out of the box.
 
 Explore Gradle's community cookbook on [Using Gradle with Continuous Integration systems](https://community.gradle.org/cookbook/ci/).
 
